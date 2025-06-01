@@ -21,6 +21,14 @@ function Button({
       </button>
     );
   }
+
+  if (variant === "other") {
+    return (
+      <button onClick={onClick} className={`flex text-justify ${className}`}>
+        {children}
+      </button>
+    );
+  }
   return (
     <button
       onClick={onClick}
