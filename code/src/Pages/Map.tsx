@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import Screen from "../components/layout/screenbase";
 import Button from "../components/ui/Button";
 import Header from "../components/ui/Header";
-import mapbg from "../../../backend/assets/fullmap/Terreo.png";
+import { Floor } from "../services/data/floor";
 
 // Após o usuário escolher um destino
 // O respectivo mapa com a rota é renderizado.
@@ -115,7 +115,7 @@ function Map() {
           onTouchEnd={handleTouchEnd}
         >
           <img
-            src={mapbg}
+            src={Floor[1].image_route}
             alt="Imagem-do-mapa"
             className="absolute"
             style={{
