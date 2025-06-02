@@ -17,9 +17,15 @@ function Tutorial() {
       </section>
 
       <section className="flex flex-col items-center justify-center mb-10">
-        <Card number="1">Leia o QRCode apresentado</Card>
-        <Card number="2">Escolha o local que deseja ir</Card>
-        <Card number="3">Siga o caminho indicado!</Card>
+        <Card number="1" variant="tutorial">
+          Leia o QRCode apresentado
+        </Card>
+        <Card number="2" variant="tutorial">
+          Escolha o local que deseja ir
+        </Card>
+        <Card number="3" variant="tutorial">
+          Siga o caminho indicado!
+        </Card>
       </section>
       <footer>
         <div className="bg-[#FF9B21] h-24 flex items-center justify-center">
