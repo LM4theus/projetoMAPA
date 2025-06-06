@@ -3,10 +3,12 @@ import Screen from "../components/layout/screenbase";
 import Button from "../components/ui/Button";
 import Header from "../components/ui/Header";
 import { Floor } from "../services/data/floor";
+import { useNavigate } from "react-router-dom";
 
 // Após o usuário escolher um destino
 // O respectivo mapa com a rota é renderizado.
 function Map() {
+  const navigate = useNavigate(); //Navegação entre páginas
   const containerRef = useRef(null);
   const [scale, setScale] = useState(1);
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -94,7 +96,9 @@ function Map() {
       <section className="flex flex-col">
         <Header />
         <nav className="flex">
-          <Button variant="back">voltar</Button>
+          <Button variant="back" onClick={() => navigate("/tutorial")}>
+            voltar
+          </Button>
           <h1 className="flex text-4xl ml-20 font-semibold text-[#00497D] ">
             Mapa
           </h1>
@@ -115,7 +119,7 @@ function Map() {
           onTouchEnd={handleTouchEnd}
         >
           <img
-            src={Floor[1].image_route}
+            src={Floor[30].image_route}
             alt="Imagem-do-mapa"
             className="absolute"
             style={{

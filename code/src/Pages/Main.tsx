@@ -2,8 +2,10 @@ import Screen from "../components/layout/screenbase";
 import bg from "../assets/entradaPrincipal.png";
 import fpblogo from "../assets/FPB-icon.png";
 import Button from "../components/ui/Button";
+import { useNavigate } from "react-router-dom";
 
 function Main() {
+  const navigate = useNavigate();
   return (
     <Screen>
       <figure className="flex flex-1 w-full h-2/3 mb-2 items-center">
@@ -16,7 +18,9 @@ function Main() {
         </header>
 
         <nav className="p-2">
-          <Button className="">MAPA</Button>
+          <Button className="" onClick={() => navigate("/tutorial")}>
+            MAPA
+          </Button>
         </nav>
         <footer className="flex text-gray-600 p-2">
           <a href="../about/index.html" className="" target="blank_">

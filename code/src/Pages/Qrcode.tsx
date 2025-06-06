@@ -1,6 +1,7 @@
 import Screen from "../components/layout/screenbase";
 import Button from "../components/ui/Button";
 import Header from "../components/ui/Header";
+import { useNavigate } from "react-router-dom";
 
 import { useEffect, useRef, useState } from "react";
 import { BrowserMultiFormatReader, Result } from "@zxing/library";
@@ -10,6 +11,8 @@ function QRcode() {
   const codeReaderRef = useRef<BrowserMultiFormatReader | null>(null);
   const [scannerData, setScannerData] = useState<string>("");
   const [cameraError, setCameraError] = useState<string | null>(null);
+
+  const navigate = useNavigate(); // Para navegação entre páginas
 
   useEffect(() => {
     codeReaderRef.current = new BrowserMultiFormatReader();
@@ -40,9 +43,12 @@ function QRcode() {
             videoRef.current,
             (result: Result | undefined, error) => {
               if (result) {
-                setScannerData(result.getText());
+                const code = result.getText();
+                setScannerData(code);
                 // Parar o scanner após leitura
                 codeReaderRef.current?.reset();
+
+                navigate("/busca", { state: { qrCode: code } });
               }
               // Pode ignorar erros de leitura (ex: NotFoundException)
             }
@@ -71,7 +77,9 @@ function QRcode() {
       <section className="flex flex-col">
         <Header />
         <nav className="flex">
-          <Button variant="back">voltar</Button>
+          <Button variant="back" onClick={() => navigate("/tutorial")}>
+            voltar
+          </Button>
           <h1 className="flex text-4xl ml-16 font-semibold text-[#00497D]">
             QRCode
           </h1>

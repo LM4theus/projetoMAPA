@@ -21,8 +21,10 @@ function Card({
           {number}°
         </div>
         <div className="flex flex-col">
-          <h3 className="ml-2 text-[#002845] font-bold text-3xl">{children}</h3>
-          <h4 className="ml-2">{description}</h4>
+          <h3 className="ml-2 text-[#002845] text-justify font-bold text-2xl text-nowrap">
+            {children}
+          </h3>
+          <h4 className="ml-2 text-justify">{description}</h4>
         </div>
       </div>
     );

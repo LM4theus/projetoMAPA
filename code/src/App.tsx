@@ -1,8 +1,8 @@
-import Map from "./Pages/Map";
+import Navigation from "./services/actions/navigation";
 
 // Função Principal que chama os primeiros componentes
 function App() {
-  return <Map />;
+  return <Navigation />;
 }
 
 export default App;

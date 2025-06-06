@@ -13,11 +13,16 @@ function Screen({
 }: ScreenProps) {
   return (
     <main
-      className={`${className} bg-gray-100 flex items-center justify-center min-h-screen`}
+      className={`${
+        className ?? ""
+      } bg-gray-100 flex items-center justify-center min-h-screen`}
     >
       <div
-        className="bg-white shadow-xl rounded-xl overflow-hidden p-0 h-full w-full flex flex-col justify-between "
-        style={{ width, height }}
+        className="bg-white shadow-xl rounded-xl overflow-hidden flex flex-col justify-between w-full h-full max-w-md max-h-[90vh]"
+        style={{
+          width: width ? `${width}px` : undefined,
+          height: height ? `${height}px` : undefined,
+        }}
       >
         {children}
       </div>
