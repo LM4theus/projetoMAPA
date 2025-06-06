@@ -28,13 +28,11 @@ O projeto servirá como um guia para alunos novatos se locomoverem pelo campus d
 
 ### Definições:
 
-- **Usuário final**: Pessoa que utilizará o aplicativo para localizar ambientes ou locais de interesse na faculdade.
+- **Usuário final**: Alunos da FPB seja calouros ou veteranos.
 
-- **Banco de Dados**: Estrutura utilizada para armazenar as informações necessárias ao funcionamento do sistema.
+- **Banco de Dados**: Armazenamento local com Objetos JavaScript.
 
-- **Layout do Projeto**: Estrutura visual e organizacional das telas do sistema, priorizando a usabilidade em dispositivos móveis (mobile first).
-
-- **Ambiente Virtual**: Plataforma ou sistema onde o aplicativo será executado, considerando compatibilidade com versões específicas de sistemas operacionais.
+- **Layout do Projeto**: Foco em dispositivos móveis (mobile first)
 
 ## 2. Visão Geral do Sistema
 
