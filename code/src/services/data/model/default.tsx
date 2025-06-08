@@ -1,6 +1,6 @@
 // Classe padrão para os objetos contendo os dados dos ambientes.
 
-export class Default {
+class Default {
   id: number;
   name: string;
   description: string;
@@ -21,3 +21,5 @@ export class Default {
     this.pavement = pavement;
   }
 }
+
+export default Default;
