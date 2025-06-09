@@ -2,12 +2,14 @@ import React, { useRef, useState } from "react";
 import Screen from "../components/layout/screenbase";
 import Button from "../components/ui/Button";
 import Header from "../components/ui/Header";
-import { Floor } from "../services/data/floor";
+import objects from "../services/data/objects";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 // Após o usuário escolher um destino
 // O respectivo mapa com a rota é renderizado.
 function Map() {
+  const { id } = useParams(); // Pegar o id passado na URL
   const navigate = useNavigate(); //Navegação entre páginas
   const containerRef = useRef(null);
   const [scale, setScale] = useState(1);
@@ -15,8 +17,23 @@ function Map() {
   const [dragging, setDragging] = useState(false);
   const [startDrag, setStartDrag] = useState({ x: 0, y: 0 });
   const [lastTouchDistance, setLastTouchDistance] = useState(null);
-
+  const destination = objects.find((obj) => obj.id === parseInt(id));
   const clampScale = (value) => Math.max(0.5, Math.min(value, 5));
+
+  // Se não encontrar a rota correspondente
+  if (!destination) {
+    return (
+      <Screen>
+        <Header />
+        <p className="text-center text-red-500 mt-10">Rota não encontrada.</p>
+        <div className="flex justify-center mt-4">
+          <Button variant="back" onClick={() => navigate("/busca")}>
+            Voltar
+          </Button>
+        </div>
+      </Screen>
+    );
+  }
 
   // Zoom com scroll (desktop)
   const handleWheel = (e) => {
@@ -119,8 +136,8 @@ function Map() {
           onTouchEnd={handleTouchEnd}
         >
           <img
-            src={Floor[30].image_route}
-            alt="Imagem-do-mapa"
+            src={destination?.route}
+            alt={`Imagem do Mapa: ${destination.name}`}
             className="absolute"
             style={{
               transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,

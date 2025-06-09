@@ -48,7 +48,7 @@ function QRcode() {
                 // Parar o scanner após leitura
                 codeReaderRef.current?.reset();
 
-                navigate("/busca", { state: { qrCode: code } });
+                navigate("/search", { state: { qrCode: code } });
               }
               // Pode ignorar erros de leitura (ex: NotFoundException)
             }

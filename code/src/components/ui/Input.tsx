@@ -1,12 +1,15 @@
 "use client";
 import searchIcon from "../../assets/search-icon.png";
+import { ChangeEvent } from "react";
 
 interface InputProps {
   className?: string;
   id: string;
+  value: string;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-function Input({ className, id }: InputProps) {
+function Input({ className, id, value, onChange }: InputProps) {
   return (
     <div
       className={`flex m-2 w-[341px] h-[60px] items-center rounded-3xl shadow-xl ${className}`}
@@ -16,6 +19,8 @@ function Input({ className, id }: InputProps) {
       </div>
       <input
         id={id}
+        value={value}
+        onChange={onChange}
         className=" ml-3 w-full h-full rounded-3xl focus:outline-none focus:ring-0 text-xl text-[#00497D]"
       />
     </div>
