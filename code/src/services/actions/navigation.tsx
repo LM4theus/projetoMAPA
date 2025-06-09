@@ -13,8 +13,8 @@ function Navigation() {
         <Route path="/" element={<Main />} />
         <Route path="/tutorial" element={<Tutorial />} />
         <Route path="/qrcode" element={<QRcode />} />
-        <Route path="/busca" element={<Search />} />
-        <Route path="/map" element={<Map />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/map/:id" element={<Map />} />
       </Routes>
     </Router>
   );

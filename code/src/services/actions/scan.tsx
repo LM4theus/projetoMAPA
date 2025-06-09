@@ -1,9 +1,7 @@
 import Card from "../../components/layout/Card";
 import Button from "../../components/ui/Button";
 import Screen from "../../components/layout/screenbase";
-import Header from "../../components/ui/Header";
-import Input from "../../components/ui/Input";
-import { Floor } from "../data/floor"; // ou todos os andares juntos se quiser
+import objects from "../data/objects"; // ou todos os andares juntos se quiser
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
@@ -26,7 +24,7 @@ function Scan() {
 
   // Aqui usamos todos os ambientes (se quiser importar todos os andares)
   // ou apenas um conjunto específico, como só o térreo por agora
-  const ambientes = Floor.filter((item) => item.pavement === pavimentTarget);
+  const ambientes = objects.filter((item) => item.paviment === pavimentTarget);
 
   return (
     <Screen>
@@ -45,7 +43,7 @@ function Scan() {
             >
               <Card
                 variant="location_card"
-                number={ambiente.pavement}
+                number={ambiente.paviment}
                 description={ambiente.description}
               >
                 {ambiente.name}
