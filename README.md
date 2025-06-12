@@ -177,3 +177,5 @@ O projeto servirá como um guia para alunos novatos se locomoverem pelo campus d
 - Vamiele Paulo (autora das documentações)
 
 - Jose Heverton (autor das documentações)
+
+- Daniel Vieira Azevêdo (designer)
