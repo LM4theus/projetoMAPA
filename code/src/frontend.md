@@ -2,9 +2,10 @@
 
 O frontend utiliza React com vite e Typescript. Toda formatação e estilização é feita em Tailwindcss. E toda estrutura é dividida em componentes com funcionalidades específicas no sistema.
 
-Estrutura de Pastas - Frontend
+## Estrutura de Pastas - Frontend
 
-/src
+```
+src/
 │
 ├── components/
 │ ├── layout/
@@ -25,6 +26,7 @@ Estrutura de Pastas - Frontend
 │ ├── Search.tsx
 │ └── Map.tsx
 │
+```
 
 # Componentes:
 
