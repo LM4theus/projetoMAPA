@@ -1,6 +1,42 @@
-# Documento de Levantamento de Requisitos - Projeto MAPA(FPB)
+# Documento Geral - Projeto MAPA(FPB)
 
-A Estrutura inicial de todo o projeto, para servir como base a todo desenvolvimento.
+A Estrutura inicial de todo o projeto, para servir como base a todo desenvolvimento. Este projeto utiliza React com Vite e TypeScript.
+A formatação visual é feita com TailwindCSS utilizando classes inline em cada elemento.
+
+Estrutura de Pastas
+
+/src
+│
+├── components/
+│ ├── layout/
+│ │ ├── Card.tsx
+│ │ └── ScreenBase.tsx
+│ └── ui/
+│ ├── Button.tsx
+│ ├── Header.tsx
+│ └── Input.tsx
+│
+├── assets/
+│ └── (imagens, ícones, logos, etc.)
+│
+├── pages/
+│ ├── Main.tsx
+│ ├── Tutorial.tsx
+│ ├── QRcode.tsx
+│ ├── Search.tsx
+│ └── Map.tsx
+│
+├── services/
+│ ├── actions/
+│ │ ├── findroute.tsx
+│ │ ├── navigation.tsx
+│ │ └── scan.tsx
+│ └── data/
+│ ├── objects.tsx
+│ └── model/
+│ └── imports.tsx
+|
+|
 
 ## 1. Introdução
 
@@ -75,28 +111,68 @@ O projeto servirá como um guia para alunos novatos se locomoverem pelo campus d
 ## 6. Casos de Uso / Histórias de Usuário
 
 - Caso de uso 1: ...
-- História: “Como usuário, quero ...”
+- História: “Como usuário, quero pesquisar o ambiente que desejo encontrar.”
 
 ## 7. Protótipos (se aplicável)
 
-- [Incluir imagens ou links]
+- figma: [Protótipo](https://www.figma.com/design/Vfb625cLGtKb3CxlAurhPD/MAPA---1.2?node-id=0-1&p=f&t=hcBBfMjzuSmFiSgy-0)
 
 ## 8. Requisitos Técnicos
 
-- O sistema será desenvolvido utilizando a tecnologia Flet (Framework - Python) com foco em dispositivos móveis Android e IOS.
+- O sistema será desenvolvido utilizando a tecnologia Typescript com foco em dispositivos móveis Android e IOS.
 
-- O Banco de dados será local, utilizando SQLite, considerando que todas as informações já estão mapeadas e não haverá necessidade de atualização constante.
+- O Banco de dados será local, utilizando objetos Typescript, considerando que todas as informações já estão mapeadas e não haverá necessidade de atualização constante.
 
 - A arquitetura seguirá o padrão mobile first para garantir responsividade em smartphones.
+
+- O sistema deverá ser simples e leve para os usuários acessarem com tranquilidade.
+
+- Para que o usuário não tenha que instalar nada, o sistema será um WebApp.
 
 - O ambiente de execução deverá estar em um versão específica e estável para evitar conflitos de compatibilidade entre os sistemas operacionais.
 
 ## 9. Critérios de Aceitação
 
-| Código | Critério                                                                         |
-| ------ | -------------------------------------------------------------------------------- |
-| CA001  | O sistema deve ser capaz de localizar corretamente qualquer ambiente cadastrado. |
-| CA002  | O sistema deve apresentar o mapa com destaque no ambiente selecionado.           |
-| CA003  | O sistema deve funcionar offline em dispositivos Android e iOS.                  |
-| CA004  | O tempo de resposta para qualquer busca não deve exceder 3 segundos.             |
-| CA005  | A navegação entre as telas deve ser intuitiva e clara para o usuário final.      |
+| Código | Critério                                                                                        |
+| ------ | ----------------------------------------------------------------------------------------------- |
+| CA001  | O sistema deve ser capaz de localizar corretamente qualquer ambiente cadastrado.                |
+| CA002  | O sistema deve apresentar o mapa com destaque no ambiente selecionado.                          |
+| CA003  | O sistema deve funcionar via Web onde o usuário não tenha que intslar nada para utilizar o App. |
+| CA004  | O tempo de resposta para qualquer busca não deve exceder 3 segundos.                            |
+| CA005  | A navegação entre as telas deve ser intuitiva e clara para o usuário final.                     |
+
+# Colaboradores do Projeto:
+
+- Matheus Alves Rufino Souza (desenvolvedor)
+
+- Luan da Silva Belarmino (desenvolvedor)
+
+- Lucas Matheus Felix da Rocha (desenvolvedor líder)
+
+- Jonny da Silva Gomes (desenvolvedor)
+
+- Gabriel Santos de Medeiros Costa (designer)
+
+- Caio Alex Donato Leitão (designer)
+
+- Itallo Edward Silva Santos (designer)
+
+- Jose Gilderlan Santana da Silva (designer)
+
+- Mauricio de França Lima (designer)
+
+- José Plácido de Andrade Neto (designer)
+
+- Miqueias Oliveira Ferreira (designer líder)
+
+- Weverton André Buril dos Santos (produtor líder)
+
+- Vinicius Medeiros (produtor)
+
+- João Victor Pereira Alves da Costa (produtor)
+
+- Victor Maximino de Souza (produtor)
+
+- Vamiele Paulo (autora das documentações)
+
+- Jose Heverton (autor das documentações)

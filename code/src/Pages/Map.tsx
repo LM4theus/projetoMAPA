@@ -1,26 +1,40 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Screen from "../components/layout/screenbase";
 import Button from "../components/ui/Button";
 import Header from "../components/ui/Header";
 import objects from "../services/data/objects";
-import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-// Após o usuário escolher um destino
-// O respectivo mapa com a rota é renderizado.
 function Map() {
-  const { id } = useParams(); // Pegar o id passado na URL
-  const navigate = useNavigate(); //Navegação entre páginas
-  const containerRef = useRef(null);
-  const [scale, setScale] = useState(1);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [dragging, setDragging] = useState(false);
-  const [startDrag, setStartDrag] = useState({ x: 0, y: 0 });
-  const [lastTouchDistance, setLastTouchDistance] = useState(null);
-  const destination = objects.find((obj) => obj.id === parseInt(id));
-  const clampScale = (value) => Math.max(0.5, Math.min(value, 5));
+  const { id } = useParams<{ id?: string }>(); // id pode ser undefined
+  const navigate = useNavigate();
 
-  // Se não encontrar a rota correspondente
+  // Define o tipo correto do ref para o container (div)
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  const [scale, setScale] = useState<number>(1);
+  const [position, setPosition] = useState<{ x: number; y: number }>({
+    x: 0,
+    y: 0,
+  });
+  const [dragging, setDragging] = useState<boolean>(false);
+  const [startDrag, setStartDrag] = useState<{ x: number; y: number }>({
+    x: 0,
+    y: 0,
+  });
+
+  // Tipo de lastTouchDistance deve ser number ou null
+  const [lastTouchDistance, setLastTouchDistance] = useState<number | null>(
+    null
+  );
+
+  // Se id não existir, evita parseInt com undefined
+  const destination = id
+    ? objects.find((obj) => obj.id === parseInt(id, 10))
+    : undefined;
+
+  const clampScale = (value: number) => Math.max(0.5, Math.min(value, 5));
+
   if (!destination) {
     return (
       <Screen>
@@ -35,8 +49,9 @@ function Map() {
     );
   }
 
-  // Zoom com scroll (desktop)
-  const handleWheel = (e) => {
+  // Funções com tipos para o evento
+
+  const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
     e.preventDefault();
     const zoomIntensity = 0.1;
     const newScale =
@@ -44,14 +59,13 @@ function Map() {
     setScale(clampScale(newScale));
   };
 
-  // Arrasto (desktop)
-  const handleMouseDown = (e) => {
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
     setDragging(true);
     setStartDrag({ x: e.clientX - position.x, y: e.clientY - position.y });
   };
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (dragging) {
       setPosition({ x: e.clientX - startDrag.x, y: e.clientY - startDrag.y });
     }
@@ -59,33 +73,28 @@ function Map() {
 
   const handleMouseUp = () => setDragging(false);
 
-  // Eventos Mobile
-  const handleTouchStart = (e) => {
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     if (e.touches.length === 1) {
-      // Arrasto
       setDragging(true);
       setStartDrag({
         x: e.touches[0].clientX - position.x,
         y: e.touches[0].clientY - position.y,
       });
     } else if (e.touches.length === 2) {
-      // Zoom com dois dedos
       const dist = getTouchDistance(e.touches);
       setLastTouchDistance(dist);
     }
   };
 
-  const handleTouchMove = (e) => {
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     if (e.touches.length === 1 && dragging) {
-      // Pan com um dedo
       setPosition({
         x: e.touches[0].clientX - startDrag.x,
         y: e.touches[0].clientY - startDrag.y,
       });
     } else if (e.touches.length === 2) {
-      // Pinça (zoom)
       const dist = getTouchDistance(e.touches);
-      if (lastTouchDistance) {
+      if (lastTouchDistance !== null) {
         const delta = dist - lastTouchDistance;
         const zoomIntensity = 0.005;
         const newScale = scale + delta * zoomIntensity;
@@ -100,9 +109,9 @@ function Map() {
     setLastTouchDistance(null);
   };
 
-  // Distância entre dois toques
-  const getTouchDistance = (touches) => {
-    const [touch1, touch2] = touches;
+  // Definindo o tipo para TouchList
+  const getTouchDistance = (touches: React.TouchList): number => {
+    const [touch1, touch2] = [touches[0], touches[1]];
     const dx = touch2.clientX - touch1.clientX;
     const dy = touch2.clientY - touch1.clientY;
     return Math.sqrt(dx * dx + dy * dy);

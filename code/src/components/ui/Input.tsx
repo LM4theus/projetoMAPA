@@ -1,6 +1,6 @@
 "use client";
 import searchIcon from "../../assets/search-icon.png";
-import { ChangeEvent } from "react";
+import type { ChangeEvent } from "react";
 
 interface InputProps {
   className?: string;
