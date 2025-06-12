@@ -1,4 +1,5 @@
-import { useState, useEffect, ChangeEvent } from "react";
+import { useState, useEffect } from "react";
+import type { ChangeEvent } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Screen from "../components/layout/screenbase";
 import Header from "../components/ui/Header";
@@ -8,7 +9,7 @@ import Card from "../components/layout/Card";
 import findRoute from "../services/actions/findroute";
 
 type LocationType = {
-  id: string;
+  id: number;
   name: string;
   description: string;
   route: string;

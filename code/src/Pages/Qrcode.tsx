@@ -41,7 +41,7 @@ function QRcode() {
           ?.decodeFromVideoDevice(
             selectedDeviceId,
             videoRef.current,
-            (result: Result | undefined, error) => {
+            (result: Result | undefined) => {
               if (result) {
                 const code = result.getText();
                 setScannerData(code);

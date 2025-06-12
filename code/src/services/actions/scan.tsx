@@ -3,27 +3,34 @@ import Button from "../../components/ui/Button";
 import Screen from "../../components/layout/screenbase";
 import objects from "../data/objects"; // ou todos os andares juntos se quiser
 import { useLocation } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
 function Scan() {
   const location = useLocation();
-  const qrCode = location.state?.qrCode?.toLowerCase();
-  const navigate = useNavigate();
+  const qrCodeRaw = location.state?.qrCode;
+
+  if (typeof qrCodeRaw !== "string") {
+    alert("QR Code não fornecido ou inválido.");
+    return null; // Ou um fallback UI
+  }
+
+  const qrCode = qrCodeRaw.toLowerCase();
 
   const pavimentMap = {
     terreo: "T",
     primeiro: "1",
     segundo: "2",
-  };
+  } as const; // 'as const' define as chaves como literais e valores como constantes
 
-  const pavimentTarget = pavimentMap[qrCode];
-
-  if (!pavimentTarget) {
-    return alert(`QR Code ${qrCode} não reconhecido.`);
+  // Verifica se qrCode é uma chave válida de pavimentMap
+  if (!(qrCode in pavimentMap)) {
+    alert(`QR Code ${qrCode} não reconhecido.`);
+    return null;
   }
 
-  // Aqui usamos todos os ambientes (se quiser importar todos os andares)
-  // ou apenas um conjunto específico, como só o térreo por agora
+  // Agora o TypeScript sabe que qrCode é uma chave válida
+  const pavimentTarget = pavimentMap[qrCode as keyof typeof pavimentMap];
+
+  // Filtra ambientes baseado no pavimento
   const ambientes = objects.filter((item) => item.paviment === pavimentTarget);
 
   return (
