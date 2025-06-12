@@ -3,9 +3,10 @@
 A Estrutura inicial de todo o projeto, para servir como base a todo desenvolvimento. Este projeto utiliza React com Vite e TypeScript.
 A formatação visual é feita com TailwindCSS utilizando classes inline em cada elemento.
 
-Estrutura de Pastas
+## Estrutura de Pastas
 
-/src
+```
+src/
 │
 ├── components/
 │ ├── layout/
@@ -36,7 +37,7 @@ Estrutura de Pastas
 │ └── model/
 │ └── imports.tsx
 |
-|
+```
 
 ## 1. Introdução
 

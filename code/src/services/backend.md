@@ -2,8 +2,9 @@
 
 O backend utiliza Typescript usando objetos, basicamente cada ambiente possuí um objeto e dentro dele há atributos que o sistema irá chamar quando o usuário interagir com o sistema. O principal intuito é oferecer uma lógica inteligente de recomendação e busca de ambientes com base na leitura do QR Code, facilitando a localização do aluno e garantindo uma navegação coerente entre andares e ambientes do campus.
 
-Estrutura de Pastas - Frontend
+## Estrutura de Pastas - Frontend
 
+```
 /src
 │
 ├── services/
@@ -16,6 +17,7 @@ Estrutura de Pastas - Frontend
 │ └── model/
 │ └── imports.tsx
 │
+```
 
 # Problema que o Backend Resolve:
 
